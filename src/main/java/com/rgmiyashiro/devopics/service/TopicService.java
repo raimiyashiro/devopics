@@ -1,10 +1,13 @@
 package com.rgmiyashiro.devopics.service;
 
+import com.rgmiyashiro.devopics.exception.TopicCreationException;
+import com.rgmiyashiro.devopics.exception.enums.TopicError;
 import com.rgmiyashiro.devopics.model.Topic;
 import com.rgmiyashiro.devopics.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -18,7 +21,16 @@ public class TopicService {
     public Topic insert(Topic topic) {
         topic.setId(UUID.randomUUID());
         topic.setYear(LocalDate.now().getYear());
-        return this.repository.save(topic);
+
+
+        Topic save = null;
+        try {
+            save = this.repository.save(topic);
+        } catch (EntityNotFoundException e) {
+            throw new TopicCreationException(TopicError.TAG_NOT_FOUND);
+        }
+
+        return save;
     }
 
     public List<Topic> findAll() {
