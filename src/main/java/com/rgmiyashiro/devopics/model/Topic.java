@@ -36,5 +36,4 @@ public class Topic {
 
     @Column(nullable = false)
     private int year;
-
 }

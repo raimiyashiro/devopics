@@ -1,6 +1,6 @@
 package com.rgmiyashiro.devopics.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.Column;
@@ -23,7 +23,7 @@ public class Tag {
     @Column(precision = 20, nullable = false)
     private String name;
 
-    @JsonIgnoreProperties("tags")
+    @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "tags")
