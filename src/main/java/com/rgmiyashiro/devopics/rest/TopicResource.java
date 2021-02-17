@@ -20,11 +20,11 @@ public class TopicResource {
     }
 
     @GetMapping("/topics")
-    public List<Topic> list(@RequestParam(required = false) String tag) {
-        if (tag == null) {
+    public List<Topic> list(@RequestParam(required = false) List<String> tags) {
+        if (tags == null || tags.isEmpty()) {
             return this.service.findAll();
         }
-        return this.service.findByTag(tag);
+        return this.service.findByTag(tags);
     }
 
 }

@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Service
 public class TopicService {
@@ -24,7 +25,7 @@ public class TopicService {
 
         Topic query = this.repository.findByTitle(topic.getTitle());
 
-        if(query != null) {
+        if (query != null) {
             throw new TopicCreationException(TopicError.TOPIC_ALREADY_EXISTS);
         }
 
@@ -42,7 +43,9 @@ public class TopicService {
         return this.repository.findAll();
     }
 
-    public List<Topic> findByTag(String tag) {
-        return this.repository.findByTags_NameEqualsIgnoreCase(tag);
+    public List<Topic> findByTag(List<String> tags) {
+        return this.repository.findByTags_NameIn(
+                tags.stream().map(String::toLowerCase).collect(Collectors.toList())
+        );
     }
 }

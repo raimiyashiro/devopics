@@ -8,7 +8,7 @@ import java.util.UUID;
 
 public interface TopicRepository extends JpaRepository<Topic, UUID> {
 
-    List<Topic> findByTags_NameEqualsIgnoreCase(String tag);
+    List<Topic> findByTags_NameIn(List<String> tags);
 
     Topic findByTitle(String title);
 }
