@@ -20,7 +20,7 @@ public class TopicResource {
 
     @GetMapping("/topics")
     public List<Topic> list(@RequestParam(required = false) String tag) {
-        if (tag.isEmpty()) {
+        if (tag == null) {
             return this.service.findAll();
         }
         return this.service.findByTag(tag);
