@@ -1,5 +1,6 @@
 package com.rgmiyashiro.devopics.rest;
 
+import com.rgmiyashiro.devopics.dto.TopicDTO;
 import com.rgmiyashiro.devopics.model.Topic;
 import com.rgmiyashiro.devopics.service.TopicService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -14,8 +15,8 @@ public class TopicResource {
     private TopicService service;
 
     @PostMapping("/topics")
-    public Topic post(@RequestBody Topic topic) {
-        return this.service.insert(topic);
+    public Topic post(@RequestBody TopicDTO topic) {
+        return this.service.insert(topic.buildEntity());
     }
 
     @GetMapping("/topics")

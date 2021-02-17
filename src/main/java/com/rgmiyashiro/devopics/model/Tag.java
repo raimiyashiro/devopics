@@ -29,4 +29,7 @@ public class Tag {
     @ManyToMany(mappedBy = "tags")
     public Set<Topic> topics = new HashSet<>();
 
+    public Tag(UUID id) {
+        this.id = id;
+    }
 }

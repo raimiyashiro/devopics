@@ -36,4 +36,11 @@ public class Topic {
 
     @Column(nullable = false)
     private short year;
+
+
+    public Topic(String title, String url, Set<Tag> tags) {
+        this.title = title;
+        this.url = url;
+        this.tags = tags;
+    }
 }
