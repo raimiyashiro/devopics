@@ -5,9 +5,9 @@ import com.rgmiyashiro.devopics.exception.enums.TopicError;
 import com.rgmiyashiro.devopics.model.Topic;
 import com.rgmiyashiro.devopics.repository.TopicRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.EntityNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
@@ -26,7 +26,7 @@ public class TopicService {
         Topic save = null;
         try {
             save = this.repository.save(topic);
-        } catch (EntityNotFoundException e) {
+        } catch (DataAccessException e) {
             throw new TopicCreationException(TopicError.TAG_NOT_FOUND);
         }
 
