@@ -1,7 +1,7 @@
 package com.rgmiyashiro.devopics.exception.handler;
 
 import com.rgmiyashiro.devopics.exception.TopicCreationException;
-import com.rgmiyashiro.devopics.exception.api.ApiException;
+import com.rgmiyashiro.devopics.exception.api.ApiExceptionModel;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
@@ -16,15 +16,15 @@ public class ApiExceptionHandler {
 
 
     @ExceptionHandler(TopicCreationException.class)
-    public ResponseEntity<Map<String, ApiException>> handleTopicCreationException(TopicCreationException e) {
+    public ResponseEntity<Map<String, ApiExceptionModel>> handleTopicCreationException(TopicCreationException e) {
 
-        ApiException apiException = new ApiException(
+        ApiExceptionModel apiException = new ApiExceptionModel(
                 e.getMessage(),
                 e.getErrorCode(),
                 ZonedDateTime.now()
         );
 
-        Map<String, ApiException> json = new HashMap<>();
+        Map<String, ApiExceptionModel> json = new HashMap<>();
         json.put("error", apiException);
 
         return new ResponseEntity<>(json, HttpStatus.BAD_REQUEST);

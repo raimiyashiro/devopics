@@ -7,7 +7,7 @@ import java.time.ZonedDateTime;
 
 @Data
 @AllArgsConstructor
-public class ApiException {
+public class ApiExceptionModel {
 
     private String message;
     private String code;

@@ -8,7 +8,7 @@ public class TopicCreationException extends RuntimeException {
 
 
     @Getter
-    private String errorCode;
+    private final String errorCode;
 
 
     public TopicCreationException(TopicError e) {
