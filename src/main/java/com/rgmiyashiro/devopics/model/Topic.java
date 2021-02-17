@@ -2,7 +2,6 @@ package com.rgmiyashiro.devopics.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
-import org.springframework.data.annotation.Id;
 
 import javax.persistence.*;
 import java.util.HashSet;
@@ -33,7 +32,7 @@ public class Topic {
             joinColumns = @JoinColumn(name = "topic_id"),
             inverseJoinColumns = @JoinColumn(name = "tag_id")
     )
-    private Set<Tag> tag = new HashSet<>();
+    private Set<Tag> tags = new HashSet<>();
 
     @Column(nullable = false)
     private int year;
