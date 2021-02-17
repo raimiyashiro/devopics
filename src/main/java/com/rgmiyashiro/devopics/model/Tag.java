@@ -21,7 +21,7 @@ public class Tag {
     private UUID id;
 
     @Column(precision = 20, nullable = false)
-    private String tag;
+    private String name;
 
     @JsonIgnoreProperties("tags")
     @ToString.Exclude
