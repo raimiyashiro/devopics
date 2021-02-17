@@ -17,7 +17,7 @@ public class Topic {
     @Id
     private UUID id;
 
-    @Column(precision = 50, nullable = false)
+    @Column(unique = true, precision = 50, nullable = false)
     private String title;
 
     @Column(precision = 255, nullable = false)
@@ -35,5 +35,5 @@ public class Topic {
     private Set<Tag> tags = new HashSet<>();
 
     @Column(nullable = false)
-    private int year;
+    private short year;
 }

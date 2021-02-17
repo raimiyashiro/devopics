@@ -20,8 +20,13 @@ public class TopicService {
 
     public Topic insert(Topic topic) {
         topic.setId(UUID.randomUUID());
-        topic.setYear(LocalDate.now().getYear());
+        topic.setYear((short) LocalDate.now().getYear());
 
+        Topic query = this.repository.findByTitle(topic.getTitle());
+
+        if(query != null) {
+            throw new TopicCreationException(TopicError.TOPIC_ALREADY_EXISTS);
+        }
 
         Topic save = null;
         try {
