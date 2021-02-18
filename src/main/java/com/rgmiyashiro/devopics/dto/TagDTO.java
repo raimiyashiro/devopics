@@ -15,6 +15,6 @@ public class TagDTO {
     private UUID id;
 
     public Tag buildEntity() {
-        return new Tag(this.getId());
+        return new Tag(this.id);
     }
 }
