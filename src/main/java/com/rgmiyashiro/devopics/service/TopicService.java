@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
 
@@ -23,9 +24,9 @@ public class TopicService {
         topic.setId(UUID.randomUUID());
         topic.setYear((short) LocalDate.now().getYear());
 
-        Topic query = this.repository.findByTitle(topic.getTitle());
+        Optional<Topic> query = this.repository.findByTitle(topic.getTitle());
 
-        if (query != null) {
+        if (query.isPresent()) {
             throw new TopicCreationException(TopicError.TOPIC_ALREADY_EXISTS);
         }
 
