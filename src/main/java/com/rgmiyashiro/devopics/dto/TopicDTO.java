@@ -20,7 +20,7 @@ public class TopicDTO {
 
         Set<Tag> tagEntities = this.collectTags(tags);
 
-        return new Topic(title, url, tagEntities);
+        return new Topic(this.title, this.url, this.tagEntities);
     }
 
     public Set<Tag> collectTags(Set<TagDTO> tags) {
