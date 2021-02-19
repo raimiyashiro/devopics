@@ -23,6 +23,12 @@ public class Tag {
     @Column(precision = 20, nullable = false)
     private String name;
 
+    @Column(nullable = false)
+    private String color;
+
+    @Column(nullable = false)
+    private String text;
+
     @JsonIgnore
     @ToString.Exclude
     @EqualsAndHashCode.Exclude
