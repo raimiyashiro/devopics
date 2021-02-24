@@ -13,7 +13,6 @@ public class DataSourceConfig {
 
     @Bean
     public DataSource getDataSource() {
-        Dotenv dotenv = Dotenv.load();
 
 
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
@@ -23,7 +22,7 @@ public class DataSourceConfig {
         dataSourceBuilder.username(System.getenv("devopics_db_username"));
         dataSourceBuilder.password(System.getenv("devopics_db_password"));
 
-
+//        Dotenv dotenv = Dotenv.load();
 //        dataSourceBuilder.driverClassName(dotenv.get("devopics_db_driver"));
 //        dataSourceBuilder.url(dotenv.get("devopics_db_url"));
 //        dataSourceBuilder.username(dotenv.get("devopics_db_username"));
