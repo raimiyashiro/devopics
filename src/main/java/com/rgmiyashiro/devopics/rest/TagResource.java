@@ -5,6 +5,7 @@ import com.rgmiyashiro.devopics.service.TagService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -17,7 +18,10 @@ public class TagResource {
     private TagService service;
 
     @GetMapping("/tags")
-    public List<Tag> list() {
+    public List<Tag> list(@RequestParam(required = false) boolean withTopics) {
+        if (withTopics) {
+            return this.service.findWithTopics();
+        }
         return this.service.findAll();
     }
 }

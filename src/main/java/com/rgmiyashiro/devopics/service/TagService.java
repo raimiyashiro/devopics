@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 public class TagService {
@@ -15,5 +16,11 @@ public class TagService {
 
     public List<Tag> findAll() {
         return this.repository.findAll();
+    }
+
+    public List<Tag> findWithTopics() {
+        return this.repository.findAll()
+                .stream().filter(tag -> tag.getTopics().size() > 0)
+                .collect(Collectors.toList());
     }
 }
