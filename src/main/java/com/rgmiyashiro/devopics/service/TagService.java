@@ -19,8 +19,6 @@ public class TagService {
     }
 
     public List<Tag> findWithTopics() {
-        return this.repository.findAll()
-                .stream().filter(tag -> tag.getTopics().size() > 0)
-                .collect(Collectors.toList());
+        return this.repository.findByTopics_Accepted(true);
     }
 }

@@ -9,7 +9,9 @@ import java.util.UUID;
 
 public interface TopicRepository extends JpaRepository<Topic, UUID> {
 
-    List<Topic> findByTags_NameIn(List<String> tags);
+    List<Topic> findByAccepted(boolean accepted);
+
+    List<Topic> findByAcceptedAndTags_NameIn(boolean accepted, List<String> tags);
 
     Optional<Topic> findByTitle(String title);
 }

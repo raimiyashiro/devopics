@@ -8,10 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.DataAccessException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -21,9 +19,6 @@ public class TopicService {
     private TopicRepository repository;
 
     public Topic insert(Topic topic) {
-        topic.setId(UUID.randomUUID());
-        topic.setYear((short) LocalDate.now().getYear());
-
         Optional<Topic> query = this.repository.findByTitle(topic.getTitle());
 
         if (query.isPresent()) {
@@ -44,8 +39,14 @@ public class TopicService {
         return this.repository.findAll();
     }
 
+    public List<Topic> findAccepted() {
+        return this.repository.findByAccepted(true);
+    }
+
+
     public List<Topic> findByTag(List<String> tags) {
-        return this.repository.findByTags_NameIn(
+        return this.repository.findByAcceptedAndTags_NameIn(
+                true,
                 tags.stream().map(String::toLowerCase).collect(Collectors.toList())
         );
     }

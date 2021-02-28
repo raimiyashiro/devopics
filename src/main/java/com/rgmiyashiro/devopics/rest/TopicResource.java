@@ -23,7 +23,7 @@ public class TopicResource {
     @GetMapping("/topics")
     public List<Topic> list(@RequestParam(required = false) List<String> tags) {
         if (tags == null || tags.isEmpty()) {
-            return this.service.findAll();
+            return this.service.findAccepted();
         }
         return this.service.findByTag(tags);
     }

@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.UUID;
@@ -15,7 +16,7 @@ import java.util.UUID;
 public class Topic {
 
     @Id
-    private UUID id;
+    private UUID id = UUID.randomUUID();
 
     @Column(unique = true, precision = 50, nullable = false)
     private String title;
@@ -35,7 +36,10 @@ public class Topic {
     private Set<Tag> tags = new HashSet<>();
 
     @Column(nullable = false)
-    private short year;
+    private short year = (short) LocalDate.now().getYear();
+
+    @Column(nullable = false)
+    private boolean accepted = false;
 
 
     public Topic(String title, String url, Set<Tag> tags) {

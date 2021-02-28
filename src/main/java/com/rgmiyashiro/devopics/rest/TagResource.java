@@ -18,8 +18,8 @@ public class TagResource {
     private TagService service;
 
     @GetMapping("/tags")
-    public List<Tag> list(@RequestParam(required = false) boolean withTopics) {
-        if (withTopics) {
+    public List<Tag> list(@RequestParam(required = false) boolean havingTopics) {
+        if (havingTopics) {
             return this.service.findWithTopics();
         }
         return this.service.findAll();
