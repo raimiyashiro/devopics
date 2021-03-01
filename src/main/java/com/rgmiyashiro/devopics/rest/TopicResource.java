@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "https://devopics.herokuapp.com/**")
 @RestController
 public class TopicResource {
 
