@@ -19,6 +19,10 @@ public class TagService {
     }
 
     public List<Tag> findWithTopics() {
-        return this.repository.findByTopics_Accepted(true);
+        List<Tag> tags = this.repository.findByTopics_Accepted(true);
+
+        return tags
+                .stream().distinct()
+                .collect(Collectors.toList());
     }
 }
