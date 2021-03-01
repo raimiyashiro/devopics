@@ -13,16 +13,16 @@ public class DevopicsApplication {
 		SpringApplication.run(DevopicsApplication.class, args);
 	}
 
-	@Bean
-	public WebMvcConfigurer corsConfigurer() {
-		return new WebMvcConfigurer() {
-			@Override
-			public void addCorsMappings(CorsRegistry registry) {
-				registry
-						.addMapping("/**")
-						.allowedOrigins("https://devopics.herokuapp.com");
-			}
-		};
-	}
+//	@Bean
+//	public WebMvcConfigurer corsConfigurer() {
+//		return new WebMvcConfigurer() {
+//			@Override
+//			public void addCorsMappings(CorsRegistry registry) {
+//				registry
+//						.addMapping("/**")
+//						.allowedOrigins("https://devopics.herokuapp.com");
+//			}
+//		};
+//	}
 
 }
