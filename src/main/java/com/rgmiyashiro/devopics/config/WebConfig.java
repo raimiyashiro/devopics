@@ -11,6 +11,10 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addCorsMappings(CorsRegistry registry) {
-        registry.addMapping("https://devopics.herokuapp.com/**");
+
+        registry
+                .addMapping("/**")
+                .allowedOrigins("https://devopics.herokuapp.com/**")
+                .allowedOrigins("https://devopics.herokuapp.com");
     }
 }
