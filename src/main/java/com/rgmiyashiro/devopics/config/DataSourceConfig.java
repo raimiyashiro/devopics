@@ -17,16 +17,16 @@ public class DataSourceConfig {
 
         DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 
-//        dataSourceBuilder.driverClassName(System.getenv("devopics_db_driver"));
-//        dataSourceBuilder.url(System.getenv("devopics_db_url"));
-//        dataSourceBuilder.username(System.getenv("devopics_db_username"));
-//        dataSourceBuilder.password(System.getenv("devopics_db_password"));
+        dataSourceBuilder.driverClassName(System.getenv("devopics_db_driver"));
+        dataSourceBuilder.url(System.getenv("devopics_db_url"));
+        dataSourceBuilder.username(System.getenv("devopics_db_username"));
+        dataSourceBuilder.password(System.getenv("devopics_db_password"));
 
-        Dotenv dotenv = Dotenv.load();
-        dataSourceBuilder.driverClassName(dotenv.get("devopics_db_driver"));
-        dataSourceBuilder.url(dotenv.get("devopics_db_url"));
-        dataSourceBuilder.username(dotenv.get("devopics_db_username"));
-        dataSourceBuilder.password(dotenv.get("devopics_db_password"));
+//        Dotenv dotenv = Dotenv.load();
+//        dataSourceBuilder.driverClassName(dotenv.get("devopics_db_driver"));
+//        dataSourceBuilder.url(dotenv.get("devopics_db_url"));
+//        dataSourceBuilder.username(dotenv.get("devopics_db_username"));
+//        dataSourceBuilder.password(dotenv.get("devopics_db_password"));
         return dataSourceBuilder.build();
     }
 }
