@@ -5,7 +5,10 @@ import com.rgmiyashiro.devopics.repository.TagRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -16,6 +19,12 @@ public class TagService {
 
     public List<Tag> findAll() {
         return this.repository.findAll();
+    }
+
+    public void verifyMany(List<UUID> tags) {
+        for (UUID id : tags) {
+            this.repository.findById(id).orElseThrow(EntityNotFoundException::new);
+        }
     }
 
     public List<Tag> findWithTopics() {

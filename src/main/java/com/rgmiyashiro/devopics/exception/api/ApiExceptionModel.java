@@ -9,7 +9,7 @@ import java.time.ZonedDateTime;
 @AllArgsConstructor
 public class ApiExceptionModel {
 
-    private String message;
     private String code;
+    private String message;
     private ZonedDateTime timestamp;
 }

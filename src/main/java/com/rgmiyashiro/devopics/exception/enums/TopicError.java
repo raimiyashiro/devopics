@@ -4,7 +4,8 @@ import lombok.Getter;
 
 public enum TopicError {
     TOPIC_ALREADY_EXISTS("T0000", "Title must be unique. Choose another one."),
-    TAG_NOT_FOUND("T0001", "One of the given tags does not exist.");
+    TAG_NOT_FOUND("T0001", "One of the given tags does not exist."),
+    INVALID_TOPIC("T0002", "We cannot accept this topic. I'm sorry.");
 
 
     @Getter
