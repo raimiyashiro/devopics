@@ -5,6 +5,7 @@ import com.rgmiyashiro.devopics.model.Topic;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 
+import java.util.HashSet;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -14,7 +15,7 @@ public class TopicDTO {
 
     private String title;
     private String url;
-    private Set<TagDTO> tags;
+    private Set<TagDTO> tags = new HashSet<>();
 
     public Topic buildEntity() {
 
@@ -24,6 +25,9 @@ public class TopicDTO {
     }
 
     public Set<Tag> collectTags(Set<TagDTO> tags) {
+        if(tags == null) {
+            return new HashSet<>();
+        }
         return tags.stream().map(TagDTO::buildEntity).collect(Collectors.toSet());
     }
 }
